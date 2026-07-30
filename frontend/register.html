@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Register  for an account</h2>
+
+    <input type="text" id="name" placeholder="Enter Name"><br><br>
+
+    <input type="email" id="email" placeholder="Enter Email"><br><br>
+
+    <input type="password" id="password" placeholder="Enter Password"><br><br>
+
+    <button onclick="registerUser()">Register</button>
+
+    <p>Already have an account?
+        <a href="login.html">Login</a>
+    </p>
+
+</div>
+
+<script>
+async function registerUser() {
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+
+        const response = await fetch("http://127.0.0.1:5000/api/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                password
+            })
+        });
+
+        const data = await response.json();
+
+        if(response.ok){
+            alert("Registration Successful");
+            window.location.href = "login.html";
+        }else{
+            alert(data.message);
+        }
+
+    } catch(error){
+        alert("Server not running");
+        console.log(error);
+    }
+
+}
+</script>
+
+</body>
+</html>

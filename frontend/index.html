@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart To-Do App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>TODOLIST</h1>
+
+    <button onclick="logout()">Logout</button>
+
+    <br><br>
+
+    <input
+        type="text"
+        id="taskInput"
+        placeholder="Enter Task"
+    >
+
+    <button onclick="addTask()">Add Task</button>
+
+    <br><br>
+
+    <button onclick="loadTasks()">All Tasks</button>
+    <button onclick="showPending()">Pending</button>
+    <button onclick="showCompleted()">Completed</button>
+
+    <hr>
+
+    <ul id="taskList"></ul>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
